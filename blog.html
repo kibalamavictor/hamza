@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog & News - Healinghearts charity organisation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Blog Page Specific Styles */
+        .blog-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+        }
+
+        /* Hero Section */
+        .blog-hero {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.8), rgba(233, 30, 99, 0.7)),
+                        url('1M2A9193.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .blog-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .blog-hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: white;
+            color: var(--primary-red, #c62828);
+        }
+
+        .back-home::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Blog Section */
+        .blog-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Category Filters */
+        .blog-filters {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            background: white;
+            border: 2px solid var(--primary-red, #c62828);
+            color: var(--primary-red, #c62828);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .filter-btn.active,
+        .filter-btn:hover {
+            background: var(--primary-red, #c62828);
+            color: white;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .blog-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+        }
+
+        .blog-content {
+            padding: 25px;
+        }
+
+        .blog-category {
+            display: inline-block;
+            background: var(--primary-red, #c62828);
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .blog-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--text-dark, #2c3e50);
+            margin-bottom: 15px;
+            line-height: 1.3;
+            cursor: pointer;
+            transition: color 0.3s ease;
+        }
+
+        .blog-title:hover {
+            color: var(--primary-red, #c62828);
+        }
+
+        .blog-excerpt {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .blog-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 20px;
+        }
+
+        .blog-author {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .author-avatar {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .read-more {
+            color: var(--primary-red, #c62828);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s ease;
+        }
+
+        .read-more:hover {
+            color: var(--emotional-pink, #e91e63);
+            gap: 8px;
+        }
+
+        .read-more::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        /* Featured Article */
+        .featured-article {
+            grid-column: 1 / -1;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            margin-bottom: 40px;
+        }
+
+        .featured-image {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+        }
+
+        .featured-content {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .featured-badge {
+            background: linear-gradient(135deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            color: white;
+            padding: 8px 16px;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            align-self: flex-start;
+        }
+
+        .featured-title {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--text-dark, #2c3e50);
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .featured-excerpt {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background: linear-gradient(135deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            color: white;
+            padding: 60px 20px;
+            border-radius: 20px;
+            margin-top: 60px;
+            text-align: center;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .newsletter-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-description {
+            font-size: 1.1rem;
+            margin-bottom: 30px;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 15px;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--text-dark, #2c3e50);
+        }
+
+        .newsletter-input::placeholder {
+            color: #999;
+        }
+
+        .newsletter-btn {
+            background: white;
+            color: var(--primary-red, #c62828);
+            border: none;
+            padding: 15px 30px;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .newsletter-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-hero p {
+                font-size: 1.1rem;
+            }
+
+            .blog-section {
+                padding: 40px 15px;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .featured-article {
+                grid-template-columns: 1fr;
+                gap: 0;
+            }
+
+            .featured-image {
+                height: 250px;
+            }
+
+            .featured-content {
+                padding: 30px 20px;
+            }
+
+            .featured-title {
+                font-size: 1.5rem;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter-btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .blog-filters {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .filter-btn {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="blog-page">
+        <!-- Hero Section -->
+        <section class="blog-hero">
+            <div class="blog-hero-content">
+                <h1>Blog & News</h1>
+                <p>Stay updated with our latest stories, achievements, and impact across Uganda</p>
+                <a href="index.html" class="back-home">Back to Home</a>
+            </div>
+        </section>
+
+        <!-- Blog Section -->
+        <section class="blog-section">
+            <!-- Category Filters -->
+            <div class="blog-filters">
+                <button class="filter-btn active" onclick="filterBlog('all')">All Posts</button>
+                <button class="filter-btn" onclick="filterBlog('success')">Success Stories</button>
+                <button class="filter-btn" onclick="filterBlog('updates')">Updates</button>
+                <button class="filter-btn" onclick="filterBlog('events')">Events</button>
+                <button class="filter-btn" onclick="filterBlog('impact')">Impact</button>
+            </div>
+
+            <!-- Featured Article -->
+            <div class="featured-article" data-category="success">
+                <div class="featured-image" style="background: linear-gradient(135deg, #c62828, #e91e63); display: flex; align-items: center; justify-content: center; color: white; font-size: 4rem; font-weight: bold;">🌟</div>
+                <div class="featured-content">
+                    <div class="featured-badge">Featured Story</div>
+                    <h2 class="featured-title">From Street to School: Sarah's Journey of Hope</h2>
+                    <p class="featured-excerpt">Meet Sarah, a 12-year-old girl whose life was transformed through our sponsorship program. From struggling on the streets to excelling in school, Sarah's story inspires us all.</p>
+                    <div class="blog-meta">
+                        <div class="blog-author">
+                            <div class="author-avatar">SJ</div>
+                            <span>Sarah Johnson</span>
+                        </div>
+                        <span>December 15, 2024</span>
+                    </div>
+                    <a href="#" class="read-more">Read Full Story</a>
+                </div>
+            </div>
+
+            <!-- Blog Grid -->
+            <div class="blog-grid">
+                <!-- Article 1 -->
+                <article class="blog-card" data-category="updates">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #4CAF50, #8BC34A); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">📚</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Updates</div>
+                        <h3 class="blog-title">New School Supplies Delivered to 200 Children</h3>
+                        <p class="blog-excerpt">Thanks to our generous donors, we successfully distributed school supplies to 200 children across three communities in Kampala.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">TK</div>
+                                <span>Taremwa Jonus</span>
+                            </div>
+                            <span>December 10, 2024</span>
+                        </div>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 2 -->
+                <article class="blog-card" data-category="events">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #2196F3, #03A9F4); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">🏥</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Events</div>
+                        <h3 class="blog-title">Free Health Camp Serves 150 Children</h3>
+                        <p class="blog-excerpt">Our quarterly health camp provided free medical checkups, vaccinations, and health education to 150 children in Kireka community.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">SI</div>
+                                <span>Ssembalirwa Isihak</span>
+                            </div>
+                            <span>December 5, 2024</span>
+                        </div>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 3 -->
+                <article class="blog-card" data-category="impact">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #FF9800, #FFC107); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">🎓</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Impact</div>
+                        <h3 class="blog-title">90% Pass Rate in Our Education Program</h3>
+                        <p class="blog-excerpt">We're proud to announce that 90% of children in our education program passed their exams with flying colors this semester.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">ED</div>
+                                <span>Education Team</span>
+                            </div>
+                            <span>November 28, 2024</span>
+                        </div>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 4 -->
+                <article class="blog-card" data-category="success">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #9C27B0, #E91E63); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">⭐</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Success Stories</div>
+                        <h3 class="blog-title">David Becomes Class President</h3>
+                        <p class="blog-excerpt">David, once a shy boy struggling with confidence, has been elected class president thanks to the mentorship he received.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">VM</div>
+                                <span>Volunteer Mary</span>
+                            </div>
+                            <span>November 20, 2024</span>
+                        </div>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 5 -->
+                <article class="blog-card" data-category="updates">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #00BCD4, #009688); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">🤝</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Updates</div>
+                        <h3 class="blog-title">25 New Volunteers Join Our Team</h3>
+                        <p class="blog-excerpt">We welcomed 25 new volunteers this month who will help us expand our reach and impact in more communities.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">HR</div>
+                                <span>HR Team</span>
+                            </div>
+                            <span>November 15, 2024</span>
+                        </div>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+
+                <!-- Article 6 -->
+                <article class="blog-card" data-category="events">
+                    <div class="blog-image" style="background: linear-gradient(135deg, #FF5722, #F44336); display: flex; align-items: center; justify-content: center; color: white; font-size: 3rem; font-weight: bold;">⚽</div>
+                    <div class="blog-content">
+                        <div class="blog-category">Events</div>
+                        <h3 class="blog-title">Annual Sports Day Brings Joy to 300 Kids</h3>
+                        <p class="blog-excerpt">Our annual sports day was a huge success with 300 children participating in various games and activities.</p>
+                        <div class="blog-meta">
+                            <div class="blog-author">
+                                <div class="author-avatar">ET</div>
+                                <span>Events Team</span>
+                            </div>
+                            <span>November 10, 2024</span>
+                        </div>
+                        <a href="#" class="read-more">Read More</a>
+                    </div>
+                </article>
+            </div>
+
+            <!-- Newsletter Section -->
+            <div class="newsletter-section">
+                <div class="newsletter-content">
+                    <h2 class="newsletter-title">Stay Connected</h2>
+                    <p class="newsletter-description" style="color: white;">Stay updated with our latest stories, achievements, and impact across Uganda</p>
+                    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+                        <input type="email" class="newsletter-input" placeholder="Enter your email address" required>
+                        <button type="submit" class="newsletter-btn">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Filter Blog Posts
+        function filterBlog(category) {
+            const blogCards = document.querySelectorAll('.blog-card');
+            const featuredArticle = document.querySelector('.featured-article');
+            const filterBtns = document.querySelectorAll('.filter-btn');
+            
+            // Update active button
+            filterBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && btn.textContent === 'All Posts')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter items
+            let visibleCount = 0;
+            blogCards.forEach(card => {
+                if (category === 'all' || card.dataset.category === category) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            // Show/hide featured article
+            if (featuredArticle) {
+                if (category === 'all' || featuredArticle.dataset.category === category) {
+                    featuredArticle.style.display = 'grid';
+                } else {
+                    featuredArticle.style.display = 'none';
+                }
+            }
+        }
+
+        // Newsletter Subscription
+        function subscribeNewsletter(event) {
+            event.preventDefault();
+            const email = event.target.querySelector('.newsletter-input').value;
+            
+            // Show success message
+            showNotification(`Thank you for subscribing! Updates will be sent to ${email}`, 'success');
+            
+            // Reset form
+            event.target.reset();
+        }
+
+        // Show notification function (reuse from main script)
+        function showNotification(message, type) {
+            // Create notification element
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+            notification.textContent = message;
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: ${type === 'success' ? '#d4edda' : '#f8d7da'};
+                color: ${type === 'success' ? '#155724' : '#721c24'};
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+                z-index: 10000;
+                animation: slideIn 0.3s ease;
+                max-width: 300px;
+            `;
+            
+            document.body.appendChild(notification);
+            
+            // Auto remove after 4 seconds
+            setTimeout(() => {
+                notification.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => {
+                    document.body.removeChild(notification);
+                }, 300);
+            }, 4000);
+        }
+
+        // Add animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from { transform: translateX(100%); opacity: 0; }
+                to { transform: translateX(0); opacity: 1; }
+            }
+            @keyframes slideOut {
+                from { transform: translateX(0); opacity: 1; }
+                to { transform: translateX(100%); opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

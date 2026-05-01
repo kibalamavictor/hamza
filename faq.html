@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ - Healinghearts charity organisation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* FAQ Page Specific Styles */
+        .faq-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+        }
+
+        /* Hero Section */
+        .faq-hero {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.8), rgba(233, 30, 99, 0.7)),
+                        url('1M2A9193.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+
+        .faq-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .faq-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .faq-hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: white;
+            color: var(--primary-red, #c62828);
+        }
+
+        .back-home::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            padding: 80px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .faq-categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .category-btn {
+            background: white;
+            border: 2px solid var(--primary-red, #c62828);
+            color: var(--primary-red, #c62828);
+            padding: 10px 20px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .category-btn.active,
+        .category-btn:hover {
+            background: var(--primary-red, #c62828);
+            color: white;
+        }
+
+        .faq-container {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #f0f0f0;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:last-child {
+            border-bottom: none;
+        }
+
+        .faq-item.active {
+            background: linear-gradient(135deg, rgba(255, 235, 238, 0.3), rgba(255, 243, 224, 0.3));
+        }
+
+        .faq-question {
+            padding: 25px 30px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--text-dark, #2c3e50);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .faq-question:hover {
+            color: var(--primary-red, #c62828);
+            background: rgba(255, 235, 238, 0.2);
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--primary-red, #c62828);
+            transition: transform 0.3s ease;
+            font-weight: 300;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+            padding: 0 30px;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 500px;
+            padding: 0 30px 25px 30px;
+        }
+
+        /* Search Box */
+        .faq-search {
+            margin-bottom: 40px;
+            text-align: center;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 15px 50px 15px 20px;
+            border: 2px solid #e0e0e0;
+            border-radius: 50px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            box-sizing: border-box;
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary-red, #c62828);
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary-red, #c62828);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .search-btn:hover {
+            background: var(--emotional-pink, #e91e63);
+        }
+
+        .no-results {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .faq-hero h1 {
+                font-size: 2rem;
+            }
+
+            .faq-hero p {
+                font-size: 1.1rem;
+            }
+
+            .faq-section {
+                padding: 40px 15px;
+            }
+
+            .faq-categories {
+                gap: 10px;
+            }
+
+            .category-btn {
+                padding: 8px 16px;
+                font-size: 0.85rem;
+            }
+
+            .faq-question {
+                padding: 20px;
+                font-size: 1rem;
+            }
+
+            .faq-answer {
+                padding: 0 20px 20px 20px;
+            }
+
+            .faq-item.active .faq-answer {
+                padding: 0 20px 20px 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .faq-categories {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .category-btn {
+                width: 200px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="faq-page">
+        <!-- Hero Section -->
+        <section class="faq-hero">
+            <div class="faq-hero-content">
+                <h1>Frequently Asked Questions</h1>
+                <p>Find answers to common questions about our work, donations, and how you can get involved</p>
+                <a href="index.html" class="back-home">Back to Home</a>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="faq-section">
+            <!-- Search Box -->
+            <div class="faq-search">
+                <div class="search-box">
+                    <input type="text" id="faqSearch" class="search-input" placeholder="Search questions...">
+                    <button class="search-btn" onclick="searchFAQ()">🔍</button>
+                </div>
+            </div>
+
+            <!-- Category Filters -->
+            <div class="faq-categories">
+                <button class="category-btn active" onclick="filterFAQ('all')">All</button>
+                <button class="category-btn" onclick="filterFAQ('donation')">Donations</button>
+                <button class="category-btn" onclick="filterFAQ('sponsorship')">Sponsorship</button>
+                <button class="category-btn" onclick="filterFAQ('volunteer')">Volunteering</button>
+                <button class="category-btn" onclick="filterFAQ('general')">General</button>
+            </div>
+
+            <!-- FAQ Items -->
+            <div class="faq-container">
+                <!-- General Questions -->
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is Healinghearts charity organisation?
+                    </div>
+                    <div class="faq-answer">
+                        Healinghearts charity organisation is a non-profit organization founded in 2024, dedicated to supporting orphans and vulnerable children across Uganda through education, healthcare, and comprehensive care programs. We are based in Kireka, Banda and operate throughout Uganda.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Where are you located?
+                    </div>
+                    <div class="faq-answer">
+                        Our headquarters are located in Kireka, Banda, Kampala. However, we operate across various communities in Uganda, reaching children in different regions who need our support.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="general">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How can I contact you?
+                    </div>
+                    <div class="faq-answer">
+                        You can reach us through:
+                        <br>• Phone: +256 7XX XXX XXX
+                        <br>• Email: info@healingheartsug.org
+                        <br>• Visit our office in Kireka, Banda
+                        <br>• Fill out the contact form on our website
+                    </div>
+                </div>
+
+                <!-- Donation Questions -->
+                <div class="faq-item" data-category="donation">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How can I donate?
+                    </div>
+                    <div class="faq-answer">
+                        You can donate through:
+                        <br>• Mobile Money (MTN MoMo, Airtel Money)
+                        <br>• Bank transfer to our account
+                        <br>• Online donation form on our website
+                        <br>• In-person at our office
+                        <br>All donation methods are secure and convenient.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="donation">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Is my donation tax-deductible?
+                    </div>
+                    <div class="faq-answer">
+                        Yes, donations to Healinghearts charity organisation are tax-deductible as we are a registered non-profit organization. You will receive a receipt for your donation that can be used for tax purposes.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="donation">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How is my donation used?
+                    </div>
+                    <div class="faq-answer">
+                        Your donations are used to:
+                        <br>• Provide education support (school fees, supplies)
+                        <br>• Healthcare services for children
+                        <br>• Nutrition programs and meals
+                        <br>• Administrative costs (minimal percentage)
+                        <br>We maintain full transparency and provide regular impact reports.
+                    </div>
+                </div>
+
+                <!-- Sponsorship Questions -->
+                <div class="faq-item" data-category="sponsorship">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is child sponsorship?
+                    </div>
+                    <div class="faq-answer">
+                        Child sponsorship is a monthly commitment of UGX 50,000 that provides comprehensive support for a specific child, including education, healthcare, nutrition, and personal care. You'll receive updates about your sponsored child's progress.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="sponsorship">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How long does sponsorship last?
+                    </div>
+                    <div class="faq-answer">
+                        Sponsorship is typically a long-term commitment, ideally until the child completes their education. However, you can choose the duration that works best for you. We recommend at least one year to make a meaningful impact.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="sponsorship">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Can I communicate with my sponsored child?
+                    </div>
+                    <div class="faq-answer">
+                        Yes! Sponsors receive regular updates about their child's progress, including photos and letters. You can also send letters and small gifts to your sponsored child through our office.
+                    </div>
+                </div>
+
+                <!-- Volunteer Questions -->
+                <div class="faq-item" data-category="volunteer">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        How can I volunteer?
+                    </div>
+                    <div class="faq-answer">
+                        You can volunteer by:
+                        <br>• Teaching or tutoring children
+                        <br>• Organizing activities and events
+                        <br>• Administrative support
+                        <br>• Fundraising assistance
+                        <br>• Professional skills (medical, legal, etc.)
+                        <br>Contact us to discuss your skills and availability.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="volunteer">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        Do I need specific qualifications to volunteer?
+                    </div>
+                    <div class="faq-answer">
+                        While specific qualifications can be helpful for certain roles, we welcome volunteers with various skills and backgrounds. The most important requirements are passion, commitment, and a desire to help children.
+                    </div>
+                </div>
+
+                <div class="faq-item" data-category="volunteer">
+                    <div class="faq-question" onclick="toggleFAQ(this)">
+                        What is the time commitment for volunteers?
+                    </div>
+                    <div class="faq-answer">
+                        Volunteer time commitments vary based on the role and your availability. We have opportunities ranging from a few hours per week to full-time involvement. We'll work with you to find a schedule that fits your life.
+                    </div>
+                </div>
+            </div>
+
+            <div id="noResults" class="no-results" style="display: none;">
+                No questions found matching your search. Try different keywords.
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Toggle FAQ Item
+        function toggleFAQ(element) {
+            const faqItem = element.parentElement;
+            const isActive = faqItem.classList.contains('active');
+            
+            // Close all FAQ items
+            document.querySelectorAll('.faq-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            
+            // Open clicked item if it wasn't active
+            if (!isActive) {
+                faqItem.classList.add('active');
+            }
+        }
+
+        // Filter FAQ by Category
+        function filterFAQ(category) {
+            const faqItems = document.querySelectorAll('.faq-item');
+            const categoryBtns = document.querySelectorAll('.category-btn');
+            
+            // Update active button
+            categoryBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent.toLowerCase().includes(category) || 
+                    (category === 'all' && btn.textContent === 'All')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Filter items
+            let visibleCount = 0;
+            faqItems.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+            
+            // Show/hide no results message
+            document.getElementById('noResults').style.display = 
+                visibleCount === 0 ? 'block' : 'none';
+        }
+
+        // Search FAQ
+        function searchFAQ() {
+            const searchTerm = document.getElementById('faqSearch').value.toLowerCase().trim();
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            if (!searchTerm) {
+                filterFAQ('all');
+                return;
+            }
+            
+            let visibleCount = 0;
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question').textContent.toLowerCase();
+                const answer = item.querySelector('.faq-answer').textContent.toLowerCase();
+                
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+                    
+                    // Highlight matching item
+                    item.classList.add('active');
+                } else {
+                    item.style.display = 'none';
+                    item.classList.remove('active');
+                }
+            });
+            
+            // Show/hide no results message
+            document.getElementById('noResults').style.display = 
+                visibleCount === 0 ? 'block' : 'none';
+            
+            // Reset category filters
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            document.querySelector('.category-btn').classList.add('active');
+        }
+
+        // Search on Enter key
+        document.getElementById('faqSearch').addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                searchFAQ();
+            }
+        });
+
+        // Clear search on Escape key
+        document.getElementById('faqSearch').addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                document.getElementById('faqSearch').value = '';
+                filterFAQ('all');
+            }
+        });
+    </script>
+</body>
+</html>

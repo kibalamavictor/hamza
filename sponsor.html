@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sponsor a Child - Healinghearts charity organisation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Sponsor Page Specific Styles */
+        .sponsor-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+        }
+
+        /* Hero Section */
+        .sponsor-hero {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.8), rgba(233, 30, 99, 0.7)),
+                        url('1M2A9193.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+
+        .sponsor-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .sponsor-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .sponsor-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .sponsor-hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: white;
+            color: var(--primary-red, #c62828);
+        }
+
+        .back-home::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Sponsorship Information Section */
+        .sponsorship-info {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+            margin: 40px 0;
+        }
+
+        .info-content h3 {
+            color: var(--primary-red, #c62828);
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .info-content p {
+            color: #555;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .benefits-list, .impact-list, .journey-list {
+            list-style: none;
+            padding: 0;
+            margin-bottom: 40px;
+        }
+
+        .benefits-list li, .impact-list li, .journey-list li {
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+            border-left: 4px solid var(--primary-red, #c62828);
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .benefits-list li:hover, .impact-list li:hover, .journey-list li:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 15px rgba(198, 40, 40, 0.1);
+        }
+
+        .benefits-list li strong, .impact-list li strong, .journey-list li strong {
+            color: var(--primary-red, #c62828);
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+
+        .sponsorship-cta {
+            background: linear-gradient(135deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            color: white;
+            padding: 40px;
+            border-radius: 15px;
+            text-align: center;
+            margin-top: 40px;
+        }
+
+        .sponsorship-cta h3 {
+            color: white;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        .sponsorship-cta p {
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            font-size: 1.1rem;
+        }
+
+        .sponsorship-cta .sponsor-btn {
+            background: white;
+            color: var(--primary-red, #c62828);
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .sponsorship-cta .sponsor-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Children Section */
+        .children-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .children-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .child-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .child-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .child-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+        }
+
+        .child-info {
+            padding: 25px;
+        }
+
+        .child-name {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-red, #c62828);
+            margin-bottom: 8px;
+        }
+
+        .child-age {
+            color: #666;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .child-story {
+            color: #333;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            min-height: 80px;
+        }
+
+        .sponsorship-amount {
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .amount-label {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+
+        .amount-value {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-red, #c62828);
+        }
+
+        .sponsor-btn {
+            width: 100%;
+            background: linear-gradient(135deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            color: white;
+            border: none;
+            padding: 15px;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .sponsor-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(198, 40, 40, 0.3);
+        }
+
+        /* Sponsorship Modal */
+        .sponsorship-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .sponsorship-modal.active {
+            display: flex;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            max-width: 500px;
+            width: 90%;
+            max-height: 90vh;
+            overflow-y: auto;
+            position: relative;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .modal-header h2 {
+            color: var(--primary-red, #c62828);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .selected-child-info {
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .selected-child-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red, #c62828);
+            margin-bottom: 5px;
+        }
+
+        .selected-child-amount {
+            font-size: 1.1rem;
+            color: #666;
+        }
+
+        .sponsorship-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            color: var(--text-dark, #2c3e50);
+            font-weight: 600;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .form-group input,
+        .form-group select {
+            padding: 15px;
+            border: 2px solid #e0e0e0;
+            border-radius: 10px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--primary-red, #c62828);
+            box-shadow: 0 0 0 3px rgba(233, 30, 99, 0.1);
+        }
+
+        .form-group input.error,
+        .form-group select.error {
+            border-color: #dc3545;
+            background: #fff5f5;
+        }
+
+        .error-message {
+            color: #dc3545;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .error-message.show {
+            display: block;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: none;
+            border: none;
+            font-size: 2rem;
+            cursor: pointer;
+            color: #666;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            background: #f5f5f5;
+            color: var(--primary-red, #c62828);
+        }
+
+        .submit-sponsorship {
+            background: linear-gradient(135deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            color: white;
+            border: none;
+            padding: 18px;
+            border-radius: 12px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .submit-sponsorship:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(198, 40, 40, 0.3);
+        }
+
+        .submit-sponsorship:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+        }
+
+        .submit-sponsorship.loading {
+            color: transparent;
+        }
+
+        .submit-sponsorship.loading::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            top: 50%;
+            left: 50%;
+            margin-left: -10px;
+            margin-top: -10px;
+            border: 2px solid #ffffff;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: spinner 0.8s linear infinite;
+        }
+
+        @keyframes spinner {
+            to { transform: rotate(360deg); }
+        }
+
+        .message {
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            display: none;
+            font-weight: 500;
+        }
+
+        .message.show {
+            display: block;
+            animation: slideIn 0.3s ease;
+        }
+
+        .message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateY(-20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .sponsor-hero h1 {
+                font-size: 2rem;
+            }
+
+            .sponsor-hero p {
+                font-size: 1.1rem;
+            }
+
+            .children-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+                gap: 20px;
+            }
+
+            .modal-content {
+                padding: 30px 20px;
+                margin: 10px;
+            }
+        }
+
+        /* Video Section Styles */
+        .video-section {
+            padding: 60px 0;
+            margin-top: 60px;
+            background: linear-gradient(135deg, rgba(255, 235, 238, 0.3), rgba(255, 243, 224, 0.3));
+            border-radius: 20px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .video-card {
+            background: white;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .video-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .video-container {
+            position: relative;
+            width: 100%;
+            padding-bottom: 120%; /* Reduced height, more square aspect ratio */
+            background: #000;
+            overflow: hidden;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 16px 16px 0 0;
+        }
+
+        /* Hide fullscreen button for all browsers */
+        .video-container video::-webkit-media-controls-fullscreen-button {
+            display: none !important;
+        }
+
+        .video-container video::-webkit-media-controls-play-button {
+            display: block !important;
+        }
+
+        .video-container video::-webkit-media-controls-timeline {
+            display: block !important;
+        }
+
+        .video-container video::-webkit-media-controls-current-time-display {
+            display: block !important;
+        }
+
+        .video-container video::-webkit-media-controls-time-remaining-display {
+            display: block !important;
+        }
+
+        .video-container video::-webkit-media-controls-mute-button {
+            display: block !important;
+        }
+
+        .video-container video::-webkit-media-controls-toggle-closed-captions-button {
+            display: block !important;
+        }
+
+        .video-container video::-webkit-media-controls-volume-slider {
+            display: block !important;
+        }
+
+        .video-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .video-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red, #c62828);
+            margin-bottom: 8px;
+        }
+
+        .video-description {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 768px) {
+            .video-section {
+                padding: 40px 20px;
+                margin-top: 40px;
+            }
+
+            .video-grid {
+                grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                gap: 20px;
+            }
+
+            .video-container {
+                max-width: 200px;
+                padding-bottom: 120%; /* Maintain consistent aspect ratio */
+            }
+
+            .video-title {
+                font-size: 1.1rem;
+            }
+
+            .video-description {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .children-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .video-container {
+                max-width: 180px;
+                padding-bottom: 120%; /* Maintain consistent aspect ratio */
+            }
+
+            .video-section {
+                padding: 30px 15px;
+                margin-top: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="sponsor-page">
+        <!-- Hero Section -->
+        <section class="sponsor-hero">
+            <div class="sponsor-hero-content">
+                <h1>Sponsor a Child. Change a Life.</h1>
+                <p style="color: white;">Your monthly sponsorship provides education, healthcare, and hope to a child in need. Together, we can build a brighter future for Uganda's most vulnerable children.</p>
+                <a href="index.html" class="back-home">Back to Home</a>
+            </div>
+        </section>
+
+        <!-- Sponsorship Information Section -->
+        <section class="children-section">
+            <h2 class="section-title">Transform a Life Through Sponsorship</h2>
+            <p class="section-subtitle">Your monthly commitment provides comprehensive support for vulnerable children across Uganda</p>
+            
+            <div class="sponsorship-info">
+                <div class="info-content">
+                    <h3>What Your Sponsorship Provides</h3>
+                    <p>Your monthly sponsorship provides comprehensive support that transforms a child's life:</p>
+                    
+                    <ul class="benefits-list">
+                        <li><strong>Education:</strong> School fees, uniforms, and learning materials</li>
+                        <li><strong>Healthcare:</strong> Medical checkups and emergency care</li>
+                        <li><strong>Nutrition:</strong> Daily meals and nutritional support</li>
+                        <li><strong>Personal Care:</strong> Clothing and hygiene items</li>
+                        <li><strong>Mentorship:</strong> Counseling and life skills training</li>
+                    </ul>
+                    
+                    <h3>The Impact of Your Support</h3>
+                    <p>Your sponsorship creates lasting change for children and communities:</p>
+                    
+                    <ul class="impact-list">
+                        <li><strong>Breaking Poverty:</strong> Education creates opportunities for families</li>
+                        <li><strong>Building Leaders:</strong> Children grow up to become community leaders</li>
+                        <li><strong>Strengthening Communities:</strong> Healthy children contribute to development</li>
+                        <li><strong>Creating Hope:</strong> Your support shows children they are valued</li>
+                    </ul>
+                    
+                    <div class="sponsorship-cta">
+                        <h3>Ready to Make a Difference?</h3>
+                        <p>Join sponsors who are changing lives across Uganda. Your monthly gift provides comprehensive support that transforms children's lives and communities.</p>
+                        <button class="sponsor-btn" onclick="openSponsorshipModal('New Sponsor', 0, 'Monthly Sponsorship', 0)">Start Your Sponsorship Journey</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Video Impact Section -->
+            <div class="video-section">
+                <h2 class="section-title">See the Impact</h2>
+                <p class="section-subtitle">Watch how your support is changing lives.</p>
+                
+                <div class="video-grid">
+                    <!-- Video 1 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video controls="true" controlslist="nodownload nofullscreen" disablepictureinpicture>
+                                <source src="video 1.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">A Day in Their Life</h3>
+                            <p class="video-description">Experience the daily journey of sponsored children</p>
+                        </div>
+                    </div>
+
+                    
+                    <!-- Video 3 -->
+                    <div class="video-card">
+                        <div class="video-container">
+                            <video controls="true" controlslist="nodownload nofullscreen" disablepictureinpicture>
+                                <source src="video 3.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                        <div class="video-info">
+                            <h3 class="video-title">Hope for Tomorrow</h3>
+                            <p class="video-description">Stories of transformation and dreams coming true</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sponsorship Modal -->
+    <div id="sponsorshipModal" class="sponsorship-modal">
+        <div class="modal-content">
+            <button class="close-modal" onclick="closeSponsorshipModal()">×</button>
+            
+            <div class="modal-header">
+                <h2>Sponsor a Child</h2>
+                <p>Your monthly gift will change a life forever</p>
+            </div>
+
+            <div id="sponsorMessage" class="message"></div>
+
+            <div class="selected-child-info">
+                <div class="selected-child-name" id="selectedChildName">Child Name</div>
+                <div class="selected-child-amount" id="selectedChildAmount">Monthly Amount</div>
+            </div>
+
+            <form id="sponsorshipForm" class="sponsorship-form">
+                <div class="form-group">
+                    <label for="sponsorName">Full Name</label>
+                    <input type="text" id="sponsorName" name="sponsorName" required placeholder="Enter your full name">
+                    <span class="error-message" id="sponsorNameError">Please enter your full name</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="sponsorPhone">Phone Number</label>
+                    <input type="tel" id="sponsorPhone" name="sponsorPhone" required placeholder="e.g., 07xxxxxxxx or 00xxxxxxxx">
+                    <span class="error-message" id="sponsorPhoneError">Please enter a valid Ugandan phone number</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="sponsorEmail">Email Address</label>
+                    <input type="email" id="sponsorEmail" name="sponsorEmail" required placeholder="Enter your email address">
+                    <span class="error-message" id="sponsorEmailError">Please enter a valid email address</span>
+                </div>
+
+                <div class="form-group">
+                    <label for="mobileProvider">Mobile Money Provider</label>
+                    <select id="mobileProvider" name="mobileProvider" required>
+                        <option value="">Select your provider</option>
+                        <option value="mtn">MTN MoMo</option>
+                        <option value="airtel">Airtel Money</option>
+                    </select>
+                    <span class="error-message" id="mobileProviderError">Please select your mobile money provider</span>
+                </div>
+
+                <button type="submit" id="submitSponsorship" class="submit-sponsorship">
+                    Confirm Monthly Sponsorship
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let selectedChild = {};
+
+        // Phone number validation for Ugandan numbers
+        function validatePhoneNumber(phone) {
+            const cleanPhone = phone.replace(/\s/g, '');
+            const patterns = [
+                /^07\d{8}$/,
+                /^00\d{9}$/
+            ];
+            return patterns.some(pattern => pattern.test(cleanPhone));
+        }
+
+        // Email validation
+        function validateEmail(email) {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return emailRegex.test(email);
+        }
+
+        // Show message function
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('sponsorMessage');
+            messageDiv.textContent = text;
+            messageDiv.className = `message ${type} show`;
+            
+            setTimeout(() => {
+                messageDiv.classList.remove('show');
+            }, 5000);
+        }
+
+        // Clear all error messages
+        function clearErrors() {
+            document.querySelectorAll('.error-message').forEach(error => {
+                error.classList.remove('show');
+            });
+            document.querySelectorAll('input, select').forEach(field => {
+                field.classList.remove('error');
+            });
+        }
+
+        // Show field error
+        function showFieldError(fieldId, errorId) {
+            document.getElementById(fieldId).classList.add('error');
+            document.getElementById(errorId).classList.add('show');
+        }
+
+        // Open sponsorship modal
+        function openSponsorshipModal(childName, childAge, amountText, amountValue) {
+            selectedChild = {
+                name: childName,
+                age: childAge,
+                amountText: amountText,
+                amountValue: amountValue
+            };
+
+            // Update modal with selected child info
+            document.getElementById('selectedChildName').textContent = `${childName}, ${childAge} years old`;
+            document.getElementById('selectedChildAmount').textContent = `Monthly: ${amountText}`;
+
+            // Show modal
+            document.getElementById('sponsorshipModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close sponsorship modal
+        function closeSponsorshipModal() {
+            document.getElementById('sponsorshipModal').classList.remove('active');
+            document.body.style.overflow = 'auto';
+            
+            // Reset form
+            document.getElementById('sponsorshipForm').reset();
+            clearErrors();
+        }
+
+        // Validate sponsorship form
+        function validateSponsorshipForm(formData) {
+            clearErrors();
+            let isValid = true;
+
+            // Validate full name
+            if (!formData.sponsorName.trim()) {
+                showFieldError('sponsorName', 'sponsorNameError');
+                isValid = false;
+            }
+
+            // Validate phone number
+            if (!validatePhoneNumber(formData.sponsorPhone)) {
+                showFieldError('sponsorPhone', 'sponsorPhoneError');
+                isValid = false;
+            }
+
+            // Validate email
+            if (!validateEmail(formData.sponsorEmail)) {
+                showFieldError('sponsorEmail', 'sponsorEmailError');
+                isValid = false;
+            }
+
+            // Validate provider
+            if (!formData.mobileProvider) {
+                showFieldError('mobileProvider', 'mobileProviderError');
+                isValid = false;
+            }
+
+            return isValid;
+        }
+
+        // API call for sponsorship
+        async function submitSponsorship(data) {
+            try {
+                const response = await fetch('/api/sponsor', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                if (response.ok) {
+                    return { success: true, data: result };
+                } else {
+                    return { success: false, error: result.message || 'Sponsorship request failed' };
+                }
+            } catch (error) {
+                // For demo purposes, simulate success
+                console.log('API call failed, simulating success for demo:', error);
+                return { 
+                    success: true, 
+                    data: { 
+                        sponsorshipId: 'SPONSOR_' + Date.now(),
+                        message: 'Sponsorship request simulated successfully'
+                    }
+                };
+            }
+        }
+
+        // Handle form submission
+        document.getElementById('sponsorshipForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const formData = {
+                sponsorName: document.getElementById('sponsorName').value,
+                sponsorPhone: document.getElementById('sponsorPhone').value,
+                sponsorEmail: document.getElementById('sponsorEmail').value,
+                mobileProvider: document.getElementById('mobileProvider').value,
+                childName: selectedChild.name,
+                childAge: selectedChild.age,
+                monthlyAmount: selectedChild.amountValue,
+                timestamp: new Date().toISOString()
+            };
+
+            // Validate form
+            if (!validateSponsorshipForm(formData)) {
+                return;
+            }
+
+            // Show loading state
+            const submitBtn = document.getElementById('submitSponsorship');
+            submitBtn.disabled = true;
+            submitBtn.classList.add('loading');
+            submitBtn.textContent = 'Processing...';
+
+            try {
+                // Submit to API
+                const result = await submitSponsorship(formData);
+
+                if (result.success) {
+                    showMessage('You will receive a mobile money prompt to complete your sponsorship. Thank you for changing a life!', 'success');
+                    
+                    // Reset form and close modal after delay
+                    setTimeout(() => {
+                        closeSponsorshipModal();
+                    }, 3000);
+                    
+                    // Log sponsorship for demo
+                    console.log('Sponsorship submitted:', {
+                        ...formData,
+                        sponsorshipId: result.data.sponsorshipId
+                    });
+                } else {
+                    showMessage(result.error || 'Sponsorship request failed. Please try again.', 'error');
+                }
+            } catch (error) {
+                showMessage('An unexpected error occurred. Please try again.', 'error');
+                console.error('Sponsorship error:', error);
+            } finally {
+                // Reset button state
+                submitBtn.disabled = false;
+                submitBtn.classList.remove('loading');
+                submitBtn.textContent = 'Confirm Monthly Sponsorship';
+            }
+        });
+
+        // Real-time validation
+        document.getElementById('sponsorName').addEventListener('blur', function() {
+            if (!this.value.trim()) {
+                showFieldError('sponsorName', 'sponsorNameError');
+            } else {
+                this.classList.remove('error');
+                document.getElementById('sponsorNameError').classList.remove('show');
+            }
+        });
+
+        document.getElementById('sponsorPhone').addEventListener('blur', function() {
+            if (!validatePhoneNumber(this.value)) {
+                showFieldError('sponsorPhone', 'sponsorPhoneError');
+            } else {
+                this.classList.remove('error');
+                document.getElementById('sponsorPhoneError').classList.remove('show');
+            }
+        });
+
+        document.getElementById('sponsorEmail').addEventListener('blur', function() {
+            if (!validateEmail(this.value)) {
+                showFieldError('sponsorEmail', 'sponsorEmailError');
+            } else {
+                this.classList.remove('error');
+                document.getElementById('sponsorEmailError').classList.remove('show');
+            }
+        });
+
+        document.getElementById('mobileProvider').addEventListener('change', function() {
+            if (!this.value) {
+                showFieldError('mobileProvider', 'mobileProviderError');
+            } else {
+                this.classList.remove('error');
+                document.getElementById('mobileProviderError').classList.remove('show');
+            }
+        });
+
+        // Close modal on escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSponsorshipModal();
+            }
+        });
+
+        // Close modal on background click
+        document.getElementById('sponsorshipModal').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) {
+                closeSponsorshipModal();
+            }
+        });
+    </script>
+</body>
+</html>

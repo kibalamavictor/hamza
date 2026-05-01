@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impact Dashboard - Healinghearts charity organisation</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* Impact Dashboard Specific Styles */
+        .impact-page {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+        }
+
+        /* Hero Section */
+        .impact-hero {
+            background: linear-gradient(135deg, rgba(198, 40, 40, 0.8), rgba(233, 30, 99, 0.7)),
+                        url('1M2A9193.jpg') center/cover;
+            color: white;
+            text-align: center;
+            padding: 100px 20px 60px;
+            position: relative;
+        }
+
+        .impact-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+        }
+
+        .impact-hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .impact-hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .impact-hero p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .back-home {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            padding: 12px 24px;
+            border: 2px solid white;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .back-home:hover {
+            background: white;
+            color: var(--primary-red, #c62828);
+        }
+
+        .back-home::before {
+            content: '←';
+            font-size: 1.2rem;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            padding: 80px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .stat-card {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .stat-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+        }
+
+        .stat-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .stat-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: var(--primary-red, #c62828);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-red, #c62828);
+            margin-bottom: 10px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #666;
+            font-weight: 600;
+        }
+
+        /* Campaign Progress Section */
+        .campaigns-section {
+            padding: 60px 20px;
+            background: white;
+            border-radius: 20px;
+            margin: 0 20px 60px;
+        }
+
+        .campaigns-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .campaign-card {
+            background: linear-gradient(135deg, #ffebee, #fff3e0);
+            border-radius: 16px;
+            padding: 25px;
+            border: 1px solid rgba(233, 30, 99, 0.1);
+        }
+
+        .campaign-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red, #c62828);
+            margin-bottom: 15px;
+        }
+
+        .campaign-description {
+            color: #666;
+            margin-bottom: 20px;
+            line-height: 1.5;
+        }
+
+        .progress-container {
+            margin-bottom: 15px;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .progress-bar {
+            height: 12px;
+            background: #e0e0e0;
+            border-radius: 6px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            border-radius: 6px;
+            transition: width 2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Visual Charts Section */
+        .charts-section {
+            padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .charts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .chart-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .chart-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-red, #c62828);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        /* CSS-based Charts */
+        .bar-chart {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            height: 200px;
+            margin-bottom: 20px;
+        }
+
+        .bar {
+            width: 40px;
+            background: linear-gradient(180deg, var(--primary-red, #c62828), var(--emotional-pink, #e91e63));
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: growBar 1.5s ease forwards;
+        }
+
+        @keyframes growBar {
+            from { height: 0; }
+        }
+
+        .bar:hover {
+            transform: scaleY(1.05);
+            box-shadow: 0 -5px 20px rgba(198, 40, 40, 0.3);
+        }
+
+        .bar-label {
+            position: absolute;
+            bottom: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.8rem;
+            color: #666;
+            white-space: nowrap;
+        }
+
+        .bar-value {
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--primary-red, #c62828);
+        }
+
+        /* Pie Chart */
+        .pie-chart {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 30px;
+            position: relative;
+        }
+
+        .pie-slice {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            clip-path: polygon(50% 50%, 50% 0%, 100% 0%);
+            transform-origin: center;
+        }
+
+        .pie-legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            border-radius: 4px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .impact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .impact-hero p {
+                font-size: 1.1rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+                gap: 20px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .campaigns-section {
+                margin: 0 10px 40px;
+                padding: 40px 15px;
+            }
+
+            .charts-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .campaigns-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bar-chart {
+                height: 150px;
+            }
+
+            .bar {
+                width: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="impact-page">
+        <!-- Hero Section -->
+        <section class="impact-hero">
+            <div class="impact-hero-content">
+                <h1>Our Impact Dashboard</h1>
+                <p>See the real difference we're making together in children's lives across Uganda</p>
+                <a href="index.html" class="back-home">Back to Home</a>
+            </div>
+        </section>
+
+        <!-- Statistics Section -->
+        <section class="stats-section">
+            <h2 class="section-title">Live Impact Statistics</h2>
+            <p class="section-subtitle">Real-time numbers showing our collective impact</p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">👧</div>
+                    <div class="stat-number" data-target="1250">0</div>
+                    <div class="stat-label">Children Helped</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🎓</div>
+                    <div class="stat-number" data-target="890">0</div>
+                    <div class="stat-label">Education Provided</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🏥</div>
+                    <div class="stat-number" data-target="450">0</div>
+                    <div class="stat-label">Healthcare Services</div>
+                </div>
+                
+                <div class="stat-card">
+                    <div class="stat-icon">🤝</div>
+                    <div class="stat-number" data-target="320">0</div>
+                    <div class="stat-label">Active Sponsors</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Campaign Progress Section -->
+        <section class="campaigns-section">
+            <h2 class="section-title">Campaign Progress</h2>
+            <p class="section-subtitle">Track our ongoing fundraising campaigns</p>
+            
+            <div class="campaigns-grid">
+                <div class="campaign-card">
+                    <h3 class="campaign-title">School Supplies Drive</h3>
+                    <p class="campaign-description">Providing essential learning materials for 200 children this semester</p>
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>UGX 8,500,000 raised</span>
+                            <span>85%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="85"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-card">
+                    <h3 class="campaign-title">Healthcare Fund</h3>
+                    <p class="campaign-description">Emergency medical care and regular health checkups for vulnerable children</p>
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>UGX 12,000,000 raised</span>
+                            <span>60%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="60"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="campaign-card">
+                    <h3 class="campaign-title">Nutrition Program</h3>
+                    <p class="campaign-description">Daily meals and nutrition support for malnourished children</p>
+                    <div class="progress-container">
+                        <div class="progress-info">
+                            <span>UGX 5,200,000 raised</span>
+                            <span>52%</span>
+                        </div>
+                        <div class="progress-bar">
+                            <div class="progress-fill" data-progress="52"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Visual Charts Section -->
+        <section class="charts-section">
+            <h2 class="section-title">Impact Analytics</h2>
+            <p class="section-subtitle">Visual representation of our reach and effectiveness</p>
+            
+            <div class="charts-grid">
+                <div class="chart-card">
+                    <h3 class="chart-title">Monthly Impact Growth</h3>
+                    <div class="bar-chart">
+                        <div class="bar" style="height: 40%;" data-value="120">
+                            <span class="bar-value">120</span>
+                            <span class="bar-label">Jan</span>
+                        </div>
+                        <div class="bar" style="height: 60%;" data-value="180">
+                            <span class="bar-value">180</span>
+                            <span class="bar-label">Feb</span>
+                        </div>
+                        <div class="bar" style="height: 75%;" data-value="225">
+                            <span class="bar-value">225</span>
+                            <span class="bar-label">Mar</span>
+                        </div>
+                        <div class="bar" style="height: 90%;" data-value="270">
+                            <span class="bar-value">270</span>
+                            <span class="bar-label">Apr</span>
+                        </div>
+                        <div class="bar" style="height: 100%;" data-value="300">
+                            <span class="bar-value">300</span>
+                            <span class="bar-label">May</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="chart-card">
+                    <h3 class="chart-title">Service Distribution</h3>
+                    <div class="pie-chart">
+                        <div class="pie-slice" style="background: #c62828; transform: rotate(0deg);"></div>
+                        <div class="pie-slice" style="background: #e91e63; transform: rotate(120deg);"></div>
+                        <div class="pie-slice" style="background: #ff6b35; transform: rotate(240deg);"></div>
+                    </div>
+                    <div class="pie-legend">
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #c62828;"></div>
+                            <span>Education (40%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #e91e63;"></div>
+                            <span>Healthcare (35%)</span>
+                        </div>
+                        <div class="legend-item">
+                            <div class="legend-color" style="background: #ff6b35;"></div>
+                            <span>Nutrition (25%)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Animated Counter Function
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current).toLocaleString();
+            }, 16);
+        }
+
+        // Initialize counters when page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            const counters = document.querySelectorAll('.stat-number');
+            
+            // Use Intersection Observer to trigger animation when visible
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const target = parseInt(entry.target.dataset.target);
+                        animateCounter(entry.target, target);
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+
+            counters.forEach(counter => {
+                observer.observe(counter);
+            });
+
+            // Animate progress bars
+            const progressBars = document.querySelectorAll('.progress-fill');
+            progressBars.forEach(bar => {
+                const progress = bar.dataset.progress;
+                setTimeout(() => {
+                    bar.style.width = progress + '%';
+                }, 500);
+            });
+
+            // Animate bar charts
+            const bars = document.querySelectorAll('.bar');
+            bars.forEach((bar, index) => {
+                const height = bar.style.height;
+                bar.style.height = '0';
+                setTimeout(() => {
+                    bar.style.height = height;
+                }, 800 + (index * 200));
+            });
+        });
+    </script>
+</body>
+</html>

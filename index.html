@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Healinghearts charity organisation - Restoring Hope. Changing Lives.</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Top Bar -->
+    <div class="top-bar">
+        <div class="top-bar-container">
+            <div class="language-selector">
+                <span>Choose language:</span>
+                <a href="#" class="lang-flag">🇬🇧 EN</a>
+                <a href="#" class="lang-flag">🇺🇬 UG</a>
+            </div>
+            <div class="login-link">
+                <a href="#" class="login-btn" onclick="openLoginModal()">Login</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-section">
+                <div class="logo-stack">
+                    <img src="logo.png" alt="Healinghearts charity organisation" class="header-logo">
+                    <div class="brand-text">
+                        <h1 class="org-name">Healinghearts charity organisation</h1>
+                        <p class="tagline">Restoring Hope. Changing Lives.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="donate.html" class="btn-donate">Donate</a>
+                <a href="sponsor.html" class="btn-sponsor">Sponsor a Child</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Bar -->
+    <nav class="nav-bar">
+        <div class="nav-container">
+            <ul class="nav-menu">
+                <li><a href="#home" class="nav-link active">Home</a></li>
+                <li><a href="#story" class="nav-link">Our Story</a></li>
+                <li><a href="#what-we-do" class="nav-link">What We Do</a></li>
+                <li><a href="impact.html" class="nav-link">Impact Dashboard</a></li>
+                <li><a href="blog.html" class="nav-link">Blog & News</a></li>
+                <li><a href="#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="#team" class="nav-link">Our Team</a></li>
+                <li><a href="faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+                <li><a href="#donation" class="nav-link">Donate</a></li>
+            </ul>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search..." class="search-input">
+                <button class="search-btn" onclick="performSearch()">🔍</button>
+            </div>
+            <div class="mobile-menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1 class="fade-in">Restoring Hope. Changing Lives.</h1>
+            <p class="fade-in-delay">Supporting orphans and vulnerable children across Uganda through education, care, and opportunity.</p>
+            <div class="hero-buttons fade-in-delay-2">
+                <a href="donate.html" class="btn-primary">Donate Now</a>
+                <button class="btn-secondary" onclick="scrollToSection('get-involved')">Join the Movement</button>
+            </div>
+            <p class="hero-location fade-in-delay-3">Founded in Kireka, Banda – now reaching communities across Uganda.</p>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="testimonials">
+        <div class="container">
+            <h2 class="section-title fade-in">What People Say</h2>
+            <p class="section-subtitle fade-in-delay">Hear from our supporters and beneficiaries</p>
+            
+            <div class="testimonials-carousel">
+                <div class="testimonial-track">
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p class="testimonial-text">"Sponsoring a child through Healinghearts has been one of the most rewarding experiences of my life. Seeing the direct impact of my support brings me joy every day."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">👤</div>
+                                <div class="author-info">
+                                    <h4>Sarah Johnson</h4>
+                                    <p>Child Sponsor</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p class="testimonial-text">"The education support my daughter receives has transformed her future. She's now excelling in school and dreams of becoming a doctor."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">👩</div>
+                                <div class="author-info">
+                                    <h4>Mary Nalwoga</h4>
+                                    <p>Parent</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p class="testimonial-text">"As a volunteer, I've seen firsthand how this organization changes lives. The dedication and transparency are remarkable."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">👨</div>
+                                <div class="author-info">
+                                    <h4>David Katumba</h4>
+                                    <p>Volunteer</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="testimonial-card">
+                        <div class="testimonial-content">
+                            <div class="stars">⭐⭐⭐⭐⭐</div>
+                            <p class="testimonial-text">"The healthcare services saved my son's life. I'm forever grateful for the support and care we received."</p>
+                            <div class="testimonial-author">
+                                <div class="author-avatar">👨</div>
+                                <div class="author-info">
+                                    <h4>Joseph Ssekandi</h4>
+                                    <p>Parent</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section id="story" class="story">
+        <div class="container">
+            <h2 class="section-title fade-in">Where It All Began</h2>
+            <div class="story-content">
+                <div class="story-text fade-in">
+                    <p>Healinghearts charity organisation was founded in 2024 in Kireka, Banda, inspired by real-life experiences growing up in challenging environments.</p>
+                    <p>Witnessing the effects of poverty, lack of emotional support, and limited opportunities on young people sparked a desire to create change. A tragic personal loss further strengthened this mission, highlighting how deeply circumstances can shape a person's life.</p>
+                    <p>What started as a response to one community has now grown into a broader effort—reaching vulnerable children across different parts of Uganda.</p>
+                    <p>Today, Healinghearts charity organisation is committed to identifying and supporting children in need wherever they are, giving them hope, care, and a chance at a better future.</p>
+                </div>
+                <div class="story-image fade-in">
+                    <img src="slum.jpeg" alt="slum">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission & Vision Section -->
+    <section id="mission" class="mission">
+        <div class="container">
+            <h2 class="section-title fade-in">Mission & Vision</h2>
+            <div class="mission-cards">
+                <div class="mission-card fade-in">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <h3>Mission</h3>
+                    <p>To identify and support orphans and vulnerable children across Uganda through education, emotional care, and life-changing opportunities.</p>
+                </div>
+                <div class="mission-card fade-in">
+                    <div class="card-icon">
+                        <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/>
+                            <polyline points="22 4 12 14.01 9 11.01"/>
+                        </svg>
+                    </div>
+                    <h3>Vision</h3>
+                    <p>A Uganda where every child has access to support, dignity, and a future full of possibilities.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What We Do Section -->
+    <section id="what-we-do" class="what-we-do">
+        <div class="container">
+            <h2 class="section-title fade-in">What We Do</h2>
+            <div class="services-grid">
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                            <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                        </svg>
+                    </div>
+                    <h3>Education Support</h3>
+                    <ul>
+                        <li>School access</li>
+                        <li>Scholastic materials</li>
+                        <li>Basic learning support</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Emotional Support</h3>
+                    <ul>
+                        <li>Mentorship</li>
+                        <li>Guidance and care</li>
+                        <li>Counseling support</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <circle cx="12" cy="12" r="10"/>
+                            <path d="M16 16s-1.5-2-4-2-4 2-4 2"/>
+                            <line x1="9" y1="9" x2="9.01" y2="9"/>
+                            <line x1="15" y1="9" x2="15.01" y2="9"/>
+                        </svg>
+                    </div>
+                    <h3>Basic Needs</h3>
+                    <ul>
+                        <li>Food assistance</li>
+                        <li>Clothing support</li>
+                        <li>Emergency support</li>
+                    </ul>
+                </div>
+                <div class="service-card fade-in">
+                    <div class="service-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                            <circle cx="12" cy="10" r="3"/>
+                        </svg>
+                    </div>
+                    <h3>Outreach Programs</h3>
+                    <ul>
+                        <li>Community visits</li>
+                        <li>Identifying children in need</li>
+                        <li>Partnering with local leaders</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Impact Section -->
+    <section id="impact" class="impact">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Impact</h2>
+            <div class="impact-content">
+                <div class="impact-stats fade-in">
+                    <div class="stat-item">
+                        <div class="stat-number">5+</div>
+                        <div class="stat-label">Districts Reached</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">100+</div>
+                        <div class="stat-label">Children Supported</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-number">2024</div>
+                        <div class="stat-label">Year Founded</div>
+                    </div>
+                </div>
+                <div class="impact-text fade-in">
+                    <ul>
+                        <li>✓ Reached children in multiple communities across Uganda</li>
+                        <li>✓ Conducted outreach visits in Kampala, Jinja, Mukono, Luwero, and Wakiso</li>
+                        <li>✓ Ongoing efforts to expand reach and impact</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Map/Reach Section -->
+    <section id="reach" class="reach">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Reach Across Uganda</h2>
+            <div class="reach-content fade-in">
+                <div class="reach-map">
+                    <div class="location-dots">
+                        <div class="location-dot" data-location="Kampala">
+                            <span>Kampala</span>
+                        </div>
+                        <div class="location-dot" data-location="Jinja">
+                            <span>Jinja</span>
+                        </div>
+                        <div class="location-dot" data-location="Mukono">
+                            <span>Mukono</span>
+                        </div>
+                        <div class="location-dot" data-location="Luwero">
+                            <span>Luwero</span>
+                        </div>
+                        <div class="location-dot" data-location="Wakiso">
+                            <span>Wakiso</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">Gallery</h2>
+            <div class="gallery-grid">
+                <div class="gallery-item fade-in">
+                    <img src="4.jpg" alt="4">
+                    <div class="gallery-caption">Community outreach in Kampala</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="26.jpg" alt="26">
+                    <div class="gallery-caption">Supporting children with basic needs</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="30.jpg" alt="30">
+                    <div class="gallery-caption">Moments from our field visits</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="26.jpg" alt="26">
+                    <div class="gallery-caption">Donation activity in Jinja</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="23.jpg" alt="23">
+                    <div class="gallery-caption">Children during learning session</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="35.jpg" alt="35">
+                    <div class="gallery-caption">Community gathering</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="30.jpg" alt="30">
+                    <div class="gallery-caption">Care and support activities</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="4.jpg" alt="4">
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="32.jpg" alt="32">
+                    <div class="gallery-caption">Spreading hope and joy</div>
+                </div>
+                <div class="gallery-item fade-in">
+                    <img src="25.jpg" alt="25">
+                    <div class="gallery-caption">Building better futures</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Team Section -->
+    <section id="team" class="team">
+        <div class="container">
+            <h2 class="section-title fade-in">Our Team</h2>
+            <div class="team-grid">
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="team/Lubega Hamim.jpeg" alt="Lubega Hamim">
+                    </div>
+                    <h3>Lubega Hamim</h3>
+                    <p>Founder & Treasurer</p>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="team/isihak.jpeg" alt="isihak">
+                    </div>
+                    <h3>Ssembalirwa Isihak</h3>
+                    <p>Secretary</p>
+                </div>
+                <div class="team-member fade-in">
+                    <div class="member-image">
+                        <img src="team/jonus.jpeg" alt="jonus">
+                    </div>
+                    <h3>Taremwa Jonus</h3>
+                    <p>Media Personnel</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Get Involved Section -->
+    <section id="get-involved" class="get-involved">
+        <div class="container">
+            <h2 class="section-title fade-in">Get Involved</h2>
+            <div class="involve-grid">
+                <div class="involve-card fade-in">
+                    <h3>Donate</h3>
+                    <p>Help us reach more children across Uganda.</p>
+                    <button class="btn-primary" onclick="scrollToSection('donation')">Donate Now</button>
+                </div>
+                <div class="involve-card fade-in">
+                    <h3>Volunteer</h3>
+                    <p>Be part of our outreach missions.</p>
+                    <button class="btn-secondary" onclick="scrollToSection('contact')">Contact Us</button>
+                </div>
+                <div class="involve-card fade-in">
+                    <h3>Partner</h3>
+                    <p>Collaborate with us to expand impact.</p>
+                    <button class="btn-secondary" onclick="scrollToSection('contact')">Partner With Us</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Donation Section -->
+    <section id="donation" class="donation">
+        <div class="container">
+            <h2 class="section-title fade-in">Make a Donation</h2>
+            <div class="donation-content fade-in">
+                <div class="bank-details">
+                    <h3>Bank Transfer Details</h3>
+                    <div class="bank-info">
+                        <p><strong>Bank:</strong> Equity Bank</p>
+                        <p><strong>Account Number:</strong> 1042101916385</p>
+                        <p><strong>Account Name:</strong> HealingHearts Charity Organization</p>
+                    </div>
+                    <button class="btn-primary btn-large">Donate Now</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <h2 class="section-title fade-in">Contact Us</h2>
+            <div class="contact-content fade-in">
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Phone</h3>
+                            <p>0743541246</p>
+                            <p>0741863462</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <polyline points="22,6 12,13 2,6"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Email</h3>
+                            <p>info@healinghearts487@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M23 3a10.9 10.9 0 0 1-3.14 1.53 4.48 4.48 0 0 0-7.86 3v1A10.66 10.66 0 0 1 3 4s-4 9 5 13a11.64 11.64 0 0 1-7 2c9 5 20 0 20-11.5a4.5 4.5 0 0 0-.08-.83A7.72 7.72 0 0 0 23 3z"/>
+                            </svg>
+                        </div>
+                        <div class="contact-details">
+                            <h3>Social Media</h3>
+                            <div class="social-icons">
+                                <a href="https://www.instagram.com/healinghearts487?igsh=MThnN21qaGU5cWJ5Nw==" target="_blank" rel="noopener" class="social-icon instagram" title="Follow us on Instagram">
+                                    <img src="Ícone do instagram de logotipo de distintivo moderno _ Vetor Premium.jpeg" alt="Instagram" style="width: 45px; height: 45px; object-fit: cover;">
+                                </a>
+                                <a href="https://x.com/HealingHearts48" target="_blank" rel="noopener" class="social-icon twitter" title="Follow us on X (Twitter)">
+                                    <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                                    </svg>
+                                </a>
+                                <a href="https://wa.me/256741863462" target="_blank" rel="noopener" class="social-icon whatsapp" title="Contact us on WhatsApp">
+                                    <img src="Circle whatsapp logotype icon social media app network application popular editorial brand vector illustration _ Premium Vector.jpeg" alt="WhatsApp" style="width: 45px; height: 45px; object-fit: cover;">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <h3>Healinghearts charity organisation</h3>
+                        <p>Restoring Hope. Changing Lives.</p>
+                        <div class="footer-contact">
+                            <p>📍 Kireka, Banda – Kampala, Uganda</p>
+                            <p>📞 +256 743 541 246 | +256 741 863 462</p>
+                            <p>✉️ info@healinghearts487@gmail.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="impact.html">Impact Dashboard</a></li>
+                        <li><a href="donate.html">Donate</a></li>
+                        <li><a href="sponsor.html">Sponsor a Child</a></li>
+                        <li><a href="blog.html">Blog & News</a></li>
+                        <li><a href="faq.html">FAQ</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Get Involved</h4>
+                    <ul class="footer-links">
+                        <li><a href="#contact">Contact Us</a></li>
+                        <li><a href="#get-involved">Volunteer</a></li>
+                        <li><a href="#donation">Make a Donation</a></li>
+                        <li><a href="#team">Our Team</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4>Follow Us</h4>
+                    <div class="social-icons">
+                        <a href="https://www.instagram.com/healinghearts487?igsh=MThnN21qaGU5cWJ5Nw==" target="_blank" rel="noopener" class="social-icon instagram" title="Follow us on Instagram">
+                            <img src="Ícone do instagram de logotipo de distintivo moderno _ Vetor Premium.jpeg" alt="Instagram" style="width: 45px; height: 45px; object-fit: cover;">
+                        </a>
+                        <a href="https://x.com/HealingHearts48" target="_blank" rel="noopener" class="social-icon twitter" title="Follow us on X (Twitter)">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                            </svg>
+                        </a>
+                        <a href="https://wa.me/256741863462" target="_blank" rel="noopener" class="social-icon whatsapp" title="Contact us on WhatsApp">
+                            <img src="Circle whatsapp logotype icon social media app network application popular editorial brand vector illustration _ Premium Vector.jpeg" alt="WhatsApp" style="width: 45px; height: 45px; object-fit: cover;">
+                        </a>
+                    </div>
+                    <div class="footer-motto">
+                        <p style="color: white;">"We don't wait for change. We take it to where it's needed."</p>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p style="color: white;">&copy; 2024 Healinghearts charity organisation. All rights reserved.</p>
+                <p style="color: white;">Making a difference across Uganda, one child at a time.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Donation Modal -->
+    <div id="donateModal" class="donate-modal">
+        <div class="modal-overlay" onclick="closeDonateModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Make a Difference Today</h2>
+                <button class="close-btn" onclick="closeDonateModal()">×</button>
+            </div>
+            <div class="donate-content">
+                <div class="impact-statement">
+                    <p>🌟 <strong>234 children</strong> helped this month. Join our mission!</p>
+                </div>
+                
+                <div class="donation-amounts">
+                    <h3>Choose Your Impact</h3>
+                    <div class="amount-options">
+                        <button class="amount-btn" data-amount="10" data-impact="provides school meals for 1 child for 1 week">
+                            <span class="currency">UGX</span>
+                            <span class="amount">10,000</span>
+                            <span class="impact-text">School meals for 1 week</span>
+                        </button>
+                        <button class="amount-btn" data-amount="25" data-impact="buys school supplies for 1 child">
+                            <span class="currency">UGX</span>
+                            <span class="amount">25,000</span>
+                            <span class="impact-text">School supplies</span>
+                        </button>
+                        <button class="amount-btn" data-amount="50" data-impact="provides healthcare for 1 child for 1 month">
+                            <span class="currency">UGX</span>
+                            <span class="amount">50,000</span>
+                            <span class="impact-text">Healthcare for 1 month</span>
+                        </button>
+                        <button class="amount-btn" data-amount="100" data-impact="sponsors 1 child's education for 1 month">
+                            <span class="currency">UGX</span>
+                            <span class="amount">100,000</span>
+                            <span class="impact-text">Education for 1 month</span>
+                        </button>
+                    </div>
+                    <div class="custom-amount">
+                        <input type="number" id="customAmount" placeholder="Enter custom amount (UGX)" min="1000">
+                    </div>
+                </div>
+                
+                <div class="donation-methods">
+                    <h3>How would you like to donate?</h3>
+                    <div class="method-options">
+                        <button class="method-btn active" data-method="bank">
+                            <span class="method-icon">🏦</span>
+                            <span class="method-name">Bank Transfer</span>
+                        </button>
+                        <button class="method-btn" data-method="mobile">
+                            <span class="method-icon">📱</span>
+                            <span class="method-name">Mobile Money</span>
+                        </button>
+                        <button class="method-btn" data-method="card">
+                            <span class="method-icon">💳</span>
+                            <span class="method-name">Credit Card</span>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="selected-impact">
+                    <h4>Your Impact:</h4>
+                    <p id="impactDescription">Select an amount to see your impact</p>
+                </div>
+                
+                <button class="donate-submit-btn" onclick="processDonation()">Complete Donation</button>
+                
+                <div class="donation-trust">
+                    <div class="trust-badges">
+                        <span class="trust-badge">✅ Secure Payment</span>
+                        <span class="trust-badge">✅ Tax Deductible</span>
+                        <span class="trust-badge">✅ 100% Transparent</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Modal -->
+    <div id="loginModal" class="login-modal">
+        <div class="modal-overlay" onclick="closeLoginModal()"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Healinghearts charity organisation</h2>
+                <button class="close-btn" onclick="closeLoginModal()">×</button>
+            </div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required placeholder="Enter your password">
+                </div>
+                <div class="form-options">
+                    <label class="remember-me">
+                        <input type="checkbox" name="remember"> Remember me
+                    </label>
+                    <a href="#" class="forgot-password">Forgot password?</a>
+                </div>
+                <button type="submit" class="login-submit-btn">Login</button>
+                <div class="signup-link">
+                    <p>Don't have an account? <a href="#">Sign up as volunteer</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
